@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="AB Electronics UK  Windows 10 IOT Libraries : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>AB Electronics UK  Windows 10 IOT Libraries</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <p>&nbsp;</p>
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries">View on GitHub</a>
+
+          <h1 id="project_title">AB Electronics UK  Windows 10 IOT Libraries</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+      <p><a href="index.html">Introduction</a> | <a href="mainlibrary.html">IOT Library</a> | <a href="demoapp.html">Demo GUI Application</a> | <a href="backgroundapplicationdemos.html">Background Demo Applications</a></p>
+        <h1>
+  Class:   ServoPi</h1>
+
+<p>This class contains methods for use with the <a href="http://www.abelectronics.co.uk/products/3/Raspberry-Pi/44/Servo-Pi---PWM-Controller" target="_blank">ServoPi</a></p>
+<h3 id="methods-">Methods:</h3>
+<pre><code>Connect()  </code></pre>
+<p>Connect to the I2C device<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>IsConnected()  </code></pre>
+<p>Check if the device is connected<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> boolean</p>
+<pre><code>Dispose()  </code></pre>
+<p>Dispose of the active I2C device<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetPwmFreq(freq)  </code></pre>
+<p>Set the PWM frequency<br>
+  <strong>Parameters:</strong> freq - required frequency<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetPwm(channel, on, off)  </code></pre>
+<p>Set the output on single channels<br>
+  <strong>Parameters:</strong> channel - 1 to 16, on - time period, off - time period<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetAllPwm( on, off)  </code></pre>
+<p>Set the output on all channels<br>
+  <strong>Parameters:</strong> on - time period, off - time period<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>byte OutputEnablePin { get; set; }  </code></pre>
+<p><strong>Parameters:</strong> Set the GPIO pin for the output enable function.<br>
+  <strong>Returns:</strong> null<br>
+  <strong>Notes:</strong> The default GPIO pin 4 is not supported in Windows 10 IOT so the OE pad will need to be connected to a different GPIO pin.</p>
+<pre><code>OutputDisable()  </code></pre>
+<p>Disable the output via OE pin<br>
+  <strong>Parameters:</strong> null<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>OutputEnable()  </code></pre>
+<p>Enable the output via OE pin<br>
+  <strong>Parameters:</strong> null<br>
+  <strong>Returns:</strong> null</p>
+<h3 id="usage">Usage</h3>
+<p>To use the ServoPi Pi library in your code you must first import the library dll:</p>
+<pre><code>using ABElectronics_Win10IOT_Libraries;  </code></pre>
+<p>Next you must initialise the ServoPi class:</p>
+<pre><code>ABElectronics_Win10IOT_Libraries.ServoPi servo = new ABElectronics_Win10IOT_Libraries.ServoPi(0x40);  </code></pre>
+<p>The argument is the I2C addresses of the Servo Pi chip.</p>
+<p>Next we need to connect to the device and wait for the connection</p>
+<pre><code>servo.Connect();    while (!servo.IsConnected)  {  }  </code></pre>
+<p>Set PWM frequency to 60 Hz and enable the output</p>
+<pre><code>servo.SetPWMFreqency(60);  </code></pre>
+<p><strong>Optional</strong><br>
+  You can set the enable pin to use the output enable functions and the enable and disable the output.<br>
+  The default GPIO pin 4 is not supported in Windows 10 IOT and so the OE pad will need to be connected to a different GPIO pin to use this functionality.</p>
+<pre><code>servo.OutputEnablePin(17); // set to GPIO pin 17  servo.OutputEnable();  </code></pre>
+<p>Move the servo to a position and exit the application.</p>
+<pre><code>servo.SetPWM(1, 0, 300);</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">AB Electronics UK  Windows 10 IOT Libraries maintained by <a href="https://github.com/abelectronicsuk">abelectronicsuk</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

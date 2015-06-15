@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="AB Electronics UK  Windows 10 IOT Libraries : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>AB Electronics UK  Windows 10 IOT Libraries</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries">View on GitHub</a>
+
+          <h1 id="project_title">AB Electronics UK  Windows 10 IOT Libraries</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+      <p><a href="index.html">Introduction</a> | <a href="mainlibrary.html">IOT Library</a> | <a href="demoapp.html">Demo GUI Application</a> | <a href="backgroundapplicationdemos.html">Background Demo Applications</a></p>
+        <h1>
+<span class="octicon octicon-link"></span>Class: ADCPi</h1>
+
+<p>This class contains methods for use with the <a href="http://www.abelectronics.co.uk/products/3/Raspberry-Pi/17/ADC-Pi-V2---Raspberry-Pi-Analogue-to-Digital-converter" target="_blank">ADC Pi</a></p>
+<h3 id="methods-">Methods:</h3>
+<pre><code>Connect()  </code></pre>
+<p>Connect to the I2C device<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>IsConnected()  </code></pre>
+<p>Check if the device is connected<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> boolean</p>
+<pre><code>Dispose()  </code></pre>
+<p>Dispose of the active I2C device<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>ReadVoltage(byte channel)  </code></pre>
+<p>Read the voltage from the selected channel<br>
+  <strong>Parameters:</strong> channel as int - 1 to 8<br>
+  <strong>Returns:</strong> number as double between 0 and 5.0</p>
+<pre><code>ReadRaw(byte channel)  </code></pre>
+<p>Read the raw int value from the selected channel<br>
+  <strong>Parameters:</strong> channel as int - 1 to 8<br>
+  <strong>Returns:</strong> raw integer value from ADC buffer</p>
+<pre><code>SetPGA(byte gain)  </code></pre>
+<p>Set the gain of the PDA on the chip<br>
+  <strong>Parameters:</strong> gain as int - 1, 2, 4, 8<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetBitRate(byte rate)  </code></pre>
+<p>Set the sample bit rate of the adc<br>
+  <strong>Parameters:</strong> rate as int - 12, 14, 16, 18<br>
+  <strong>Returns:</strong> null<br>
+  12 = 12 bit (240SPS max)<br>
+  14 = 14 bit (60SPS max)<br>
+  16 = 16 bit (15SPS max)<br>
+  18 = 18 bit (3.75SPS max)</p>
+<pre><code>SetConversionMode(bool mode)  </code></pre>
+<p>Set the conversion mode for the adc<br>
+  <strong>Parameters:</strong> mode as boolean - false = One-shot conversion, true = Continuous conversion<br>
+  <strong>Returns:</strong> null</p>
+<h3 id="usage">Usage</h3>
+<p>To use the ADC Pi library in your code you must first import the library dll:</p>
+<pre><code>using ABElectronics_Win10IOT_Libraries;  </code></pre>
+<p>Next you must initialise the adc class:</p>
+<pre><code>ABElectronics_Win10IOT_Libraries.ADCPi adc = new ADCPi(0x68, 0x69);  </code></pre>
+<p>The arguments are the two I2C addresses of the ADC chips. The values shown are the default addresses of the ADC board.</p>
+<p>Next we need to connect to the device and wait for the connection before setting the bit rate and gain. The sample rate can be 12, 14, 16 or 18</p>
+<pre><code>adc.Connect();
+
+while (!adc.IsConnected)
+{
+}  
+
+adc.SetBitRate(18);
+
+adc.SetPGA(1);
+</code></pre>
+<p>You can now read the voltage from channel 1 with:</p>
+<pre><code>double readvalue = 0;
+readvalue = adc.ReadVoltage(1);  </code></pre>
+<br>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">AB Electronics UK  Windows 10 IOT Libraries maintained by <a href="https://github.com/abelectronicsuk">abelectronicsuk</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

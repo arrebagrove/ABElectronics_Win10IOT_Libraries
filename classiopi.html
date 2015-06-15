@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="AB Electronics UK  Windows 10 IOT Libraries : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>AB Electronics UK  Windows 10 IOT Libraries</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <p>&nbsp;</p>
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries">View on GitHub</a>
+
+          <h1 id="project_title">AB Electronics UK  Windows 10 IOT Libraries</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+      <p><a href="index.html">Introduction</a> | <a href="mainlibrary.html">IOT Library</a> | <a href="demoapp.html">Demo GUI Application</a> | <a href="backgroundapplicationdemos.html">Background Demo Applications</a></p>
+        <h1>
+Class: IOPi</h1>
+
+<p>This class contains methods for use with the  <a href="http://www.abelectronics.co.uk/products/3/Raspberry-Pi/18/IO-Pi-32-Channel-Port-Expander-for-the-Raspberry-Pi" target="_blank">IO Pi</a></p>
+<h3 id="methods-">Methods:</h3>
+<pre><code>Connect()  </code></pre>
+<p>Connect to the I2C device<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>IsConnected()  </code></pre>
+<p>Check if the device is connected<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> boolean</p>
+<pre><code>Dispose()  </code></pre>
+<p>Dispose of the active I2C device<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetPinDirection(byte pin, bool direction)  </code></pre>
+<p>Sets the IO direction for an individual pin<br>
+  <strong>Parameters:</strong> pin - 1 to 16, direction - true = input, false = output<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetPortDirection(byte port, byte direction)  </code></pre>
+<p>Sets the IO direction for the specified IO port<br>
+  <strong>Parameters:</strong> port - 0 = pins 1 to 8, port 1 = pins 8 to 16, direction - true = input, false = output<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetPinPullup(byte pin, bool value)  </code></pre>
+<p>Set the internal 100K pull-up resistors for the selected IO pin<br>
+  <strong>Parameters:</strong> pin - 1 to 16, value: true = Enabled, false = Disabled<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetPortPullups(byte port, byte value)  </code></pre>
+<p>Set the internal 100K pull-up resistors for the selected IO port<br>
+  <strong>Parameters:</strong> 0 = pins 1 to 8, 1 = pins 9 to 16, value: true = Enabled, false = Disabled<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>WritePin(byte pin, bool value)  </code></pre>
+<p>Write to an individual pin 1 - 16<br>
+  <strong>Parameters:</strong> pin - 1 to 16, value - true = Enabled, false = Disabled<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>WritePort(byte port, byte value)  </code></pre>
+<p>Write to all pins on the selected port<br>
+  <strong>Parameters:</strong> port - 0 = pins 1 to 8, port 1 = pins 8 to 16, value - number between 0 and 255 or 0x00 and 0xFF<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>ReadPin(byte pin)  </code></pre>
+<p>Read the value of an individual pin 1 - 16<br>
+  <strong>Parameters:</strong> pin: 1 to 16<br>
+  <strong>Returns:</strong> false = logic level low, true = logic level high</p>
+<pre><code>ReadPort(byte port)  </code></pre>
+<p>Read all pins on the selected port<br>
+  <strong>Parameters:</strong> port - 0 = pins 1 to 8, port 1 = pins 8 to 16<br>
+  <strong>Returns:</strong> number between 0 and 255 or 0x00 and 0xFF</p>
+<pre><code>InvertPort(byte port, byte polarity)  </code></pre>
+<p>Invert the polarity of the pins on a selected port<br>
+  <strong>Parameters:</strong> port - 0 = pins 1 to 8, port 1 = pins 8 to 16, polarity - 0 = same logic state of the input pin, 1 = inverted logic state of the input pin<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>InvertPin(byte pin, bool polarity)  </code></pre>
+<p>Invert the polarity of the selected pin<br>
+  <strong>Parameters:</strong> pin - 1 to 16, polarity - false = same logic state of the input pin, true = inverted logic state of the input pin<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>MirrorInterrupts(byte value)  </code></pre>
+<p>Mirror Interrupts<br>
+  <strong>Parameters:</strong> value - 1 = The INT pins are internally connected, 0 = The INT pins are not connected. INTA is associated with PortA and INTB is associated with PortB<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetInterruptPolarity(byte value)  </code></pre>
+<p>This sets the polarity of the INT output pins<br>
+  <strong>Parameters:</strong> 1 = Active - high. 0 = Active - low.<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetInterruptType(byte port, byte value)  </code></pre>
+<p>Sets the type of interrupt for each pin on the selected port<br>
+  <strong>Parameters:</strong> port 0 = pins 1 to 8, port 1 = pins 8 to 16, value: 1 = interrupt is fired when the pin matches the default value, 0 = the interrupt is fired on state change<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetInterruptDefaults(byte port, byte value)  </code></pre>
+<p>These bits set the compare value for pins configured for interrupt-on-change on the selected port.<br>
+  If the associated pin level is the opposite from the register bit, an interrupt occurs.<br>
+  <strong>Parameters:</strong> port 0 = pins 1 to 8, port 1 = pins 8 to 16, value: compare value<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetInterruptOnPort(byte port, byte value)  </code></pre>
+<p>Enable interrupts for the pins on the selected port<br>
+  <strong>Parameters:</strong> port 0 = pins 1 to 8, port 1 = pins 8 to 16, value: number between 0 and 255 or 0x00 and 0xFF<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetInterruptOnPin(byte pin, bool value)  </code></pre>
+<p>Enable interrupts for the selected pin<br>
+  <strong>Parameters:</strong> pin - 1 to 16, value - true = interrupt disabled, false = interrupt enabled<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>ReadInterruptStatus(byte port)  </code></pre>
+<p>Enable interrupts for the selected pin<br>
+  <strong>Parameters:</strong> port 0 = pins 1 to 8, port 1 = pins 8 to 16<br>
+  <strong>Returns:</strong> status</p>
+<pre><code>ReadInterruptCapture(byte port)  </code></pre>
+<p>Read the value from the selected port at the time of the last interrupt trigger<br>
+  <strong>Parameters:</strong> port 0 = pins 1 to 8, port 1 = pins 8 to 16<br>
+  <strong>Returns:</strong> status</p>
+<pre><code>ResetInterrupts()  </code></pre>
+<p>Set the interrupts A and B to 0<br>
+  <strong>Parameters:</strong> null<br>
+  <strong>Returns:</strong> null</p>
+<h3 id="usage">Usage</h3>
+<p>To use the IO Pi library in your code you must first import the library dll:</p>
+<pre><code>using ABElectronics_Win10IOT_Libraries;  </code></pre>
+<p>Next you must initialise the io class:</p>
+<pre><code>ABElectronics_Win10IOT_Libraries.IOPi bus1 = new ABElectronics_Win10IOT_Libraries.IOPi(0x20);  </code></pre>
+<p>The argument is the I2C addresses of the IO chip. The value shown are the default addresses of the IO board which are 0x20 and 0x21.</p>
+<p>Next we need to connect to the device and wait for the connection before setting ports to be inputs</p>
+<pre><code>bus1.Connect();
+
+while (!bus1.IsConnected)
+{
+}
+
+bus1.SetPortDirection(0, 0xFF);
+bus1.SetPortDirection(1, 0xFF);
+</code></pre>
+<p>You can now read the input status from channel 1 with:</p>
+<pre><code>bool value = bus1.ReadPin(1);  </code></pre>
+<br>
+<p><br>
+</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">AB Electronics UK  Windows 10 IOT Libraries maintained by <a href="https://github.com/abelectronicsuk">abelectronicsuk</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="AB Electronics UK  Windows 10 IOT Libraries : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>AB Electronics UK  Windows 10 IOT Libraries</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <p>&nbsp;</p>
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries">View on GitHub</a>
+
+          <h1 id="project_title">AB Electronics UK  Windows 10 IOT Libraries</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+      <p><a href="index.html">Introduction</a> | <a href="mainlibrary.html">IOT Library</a> | <a href="demoapp.html">Demo GUI Application</a> | <a href="backgroundapplicationdemos.html">Background Demo Applications</a></p>
+        <h1>Class: RTCPi</h1>
+
+<p>This class contains methods for use with the <a href="https://www.abelectronics.co.uk/products/3/Raspberry-Pi/15/RTC-Pi" target="_blank">RTC Pi</a></p>
+<h3 id="methods-">Methods:</h3>
+<pre><code>Connect()  </code></pre>
+<p>Connect to the I2C device<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>IsConnected()  </code></pre>
+<p>Check if the device is connected<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> boolean</p>
+<pre><code>Dispose()  </code></pre>
+<p>Dispose of the active I2C device<br>
+  <strong>Parameters:</strong> none<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetDate(DateTime date)  </code></pre>
+<p>Set the date and time on the RTC<br>
+  <strong>Parameters:</strong> date as DateTime<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>ReadDate()  </code></pre>
+<p>Returns the date from the RTC in ISO 8601 format - YYYY-MM-DDTHH<img src="https://assets-cdn.github.com/images/icons/emoji/MM.png" alt=":MM:" title=":MM:" align="absmiddle" height="20" width="20">SS<br>
+  <strong>Returns:</strong> date as DateTime</p>
+<pre><code>EnableOutput()  </code></pre>
+<p>Enable the square-wave output on the SQW pin.<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>DisableOutput()  </code></pre>
+<p>Disable the square-wave output on the SQW pin.<br>
+  <strong>Returns:</strong> null</p>
+<pre><code>SetFrequency(byte frequency)  </code></pre>
+<p>Set the frequency for the square-wave output on the SQW pin.<br>
+  <strong>Parameters:</strong> frequency - options are: 1 = 1Hz, 2 = 4.096KHz, 3 = 8.192KHz, 4 = 32.768KHz<br>
+  <strong>Returns:</strong> null</p>
+<h3 id="usage">Usage</h3>
+<p>To use the RTC Pi library in your code you must first import the library dll:</p>
+<pre><code>using ABElectronics_Win10IOT_Libraries;  </code></pre>
+<p>Next you must initialise the rtc class:</p>
+<pre><code>ABElectronics_Win10IOT_Libraries.RTCPi rtc = new ABElectronics_Win10IOT_Libraries.RTCPi();  </code></pre>
+<p>Next we need to connect to the device and wait for the connection</p>
+<pre><code>rtc.Connect();
+while (!rtc.IsConnected)
+{
+}
+</code></pre>
+<p>You can set the date and time from the RTC chip to be the 25th December 2015 at 6 AM with:</p>
+<pre><code>DateTime newdate = new DateTime(2015, 12, 25, 06, 00, 00);  rtc.SetDate(newdate);  </code></pre>
+<p>You can read the date and time from the RTC chip with:</p>
+<pre><code>DateTime value = rtc.ReadDate();  </code></pre>
+<br>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">AB Electronics UK  Windows 10 IOT Libraries maintained by <a href="https://github.com/abelectronicsuk">abelectronicsuk</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

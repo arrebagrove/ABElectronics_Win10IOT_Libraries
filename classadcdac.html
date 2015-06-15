@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="AB Electronics UK  Windows 10 IOT Libraries : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>AB Electronics UK  Windows 10 IOT Libraries</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries">View on GitHub</a>
+
+          <h1 id="project_title">AB Electronics UK  Windows 10 IOT Libraries</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/abelectronicsuk/ABElectronics_Win10IOT_Libraries/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+      <p><a href="index.html">Introduction</a> | <a href="mainlibrary.html">IOT Library</a> | <a href="demoapp.html">Demo GUI Application</a> | <a href="backgroundapplicationdemos.html">Background Demo Applications</a></p>
+       
+
+        <h1 id="adcdacpi">Class: ADCDACPi</h1>
+        <p>This class contains methods for use with the <a href="https://www.abelectronics.co.uk/products/3/Raspberry-Pi/39/ADC-DAC-Pi-Raspberry-Pi-ADC-and-DAC-expansion-board" target="_blank">ADC DAC Pi</a></p>
+        <h3 id="methods-">Methods:</h3>
+        <pre><code>ReadADCVoltage(byte channel)  </code></pre>
+        <p>Read the voltage from the selected channel on the ADC<br>
+          <strong>Parameters:</strong> channel - 1 or 2<br>
+          <strong>Returns:</strong> number as float between 0 and 2.048</p>
+        <pre><code>ReadADCRaw(byte channel)  </code></pre>
+        <p>Read the raw value from the selected channel on the ADC<br>
+          <strong>Parameters:</strong> channel - 1 or 2<br>
+          <strong>Returns:</strong> int</p>
+        <pre><code>SetADCrefVoltage(double voltage)  </code></pre>
+        <p>Set the reference voltage for the analogue to digital converter.<br>
+          The ADC uses the raspberry pi 3.3V power as a voltage reference so using this method to set the reference to match the exact output voltage from the 3.3V regulator will increase the accuracy of the ADC readings.<br>
+          <strong>Parameters:</strong> voltage - double between 0.0 and 7.0<br>
+          <strong>Returns:</strong> null</p>
+        <pre><code>SetDACVoltage(byte channel, double voltage)  </code></pre>
+        <p>Set the voltage for the selected channel on the DAC<br>
+          <strong>Parameters:</strong> channel - 1 or 2, voltage can be between 0 and 2.047 volts<br>
+          <strong>Returns:</strong> null</p>
+        <pre><code>SetDACRaw(byte channel, int value)  </code></pre>
+        <p>Set the raw value from the selected channel on the DAC<br>
+          <strong>Parameters:</strong> channel - 1 or 2,value int between 0 and 4095<br>
+          <strong>Returns:</strong> null</p>
+        <h3 id="usage">Usage</h3>
+        <p>To use the ADCDACPi library in your code you must first import the library dll:</p>
+        <pre><code>using ABElectronics_Win10IOT_Libraries;  </code></pre>
+        <p>Next you must initialise the ADCDACPi class:</p>
+        <pre><code>ABElectronics_Win10IOT_Libraries.ADCDACPi adcdac = new ABElectronics_Win10IOT_Libraries.ADCDACPi();  </code></pre>
+        <p>Next we need to connect to the device and wait for the connection</p>
+        <pre><code>adcdac.Connect();    while (!adcdac.IsConnected)  {  }  </code></pre>
+        <p>Set the reference voltage.</p>
+        <pre><code>adcdac.SetADCrefVoltage(3.3);  </code></pre>
+        <p>Read the voltage from channel 2</p>
+        <pre><code>double value = adcdac.ReadADCVoltage(2);  </code></pre>
+        <p>Set the DAC voltage on channel 2 to 1.5 volts</p>
+        <pre><code>adcdac.SetDACVoltage(2, 1.5);  </code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">AB Electronics UK  Windows 10 IOT Libraries maintained by <a href="https://github.com/abelectronicsuk">abelectronicsuk</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
